@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3d82hb74jvm7"]
+
+[ext_resource type="Script" uid="uid://cukq1vfolyppd" path="res://scripts/door.gd" id="1_uvdjg"]
+[ext_resource type="Texture2D" uid="uid://cxngkqhlge0n1" path="res://assets/door.png" id="2_uvdjg"]
+[ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="3_83dcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
+size = Vector2(38, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uvdjg"]
+polygon = PackedVector2Array(0, -4.29412, 37.9963, -4.29412, 38.0048, 2.18107, 0, 2.17647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvdjg"]
+size = Vector2(38, 18.2353)
+
+[node name="Door" type="StaticBody2D"]
+scale = Vector2(1.7, 1.7)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_uvdjg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(19, -7.88235)
+scale = Vector2(2.375, 1)
+texture = ExtResource("2_uvdjg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(18.8235, -8.23529)
+shape = SubResource("RectangleShape2D_hpvv5")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -6.88235)
+occluder = SubResource("OccluderPolygon2D_uvdjg")
+
+[node name="Detector" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -6.88235)
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(19, -1.05883)
+shape = SubResource("RectangleShape2D_uvdjg")
+debug_color = Color(0.866667, 0.411765, 0.101961, 0.47451)
+
+[node name="Breakable" parent="." instance=ExtResource("3_83dcw")]
+type = "Door"
+health = 4
+color = Color(0.309804, 0.152941, 0.0823529, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(18.8235, -20)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(18.8235, -7.05882)
+target_position = Vector2(0, 25)

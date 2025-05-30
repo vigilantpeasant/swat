@@ -1,0 +1,263 @@
+[gd_scene load_steps=4 format=3 uid="uid://pmni8bpevc3b"]
+
+[ext_resource type="Script" uid="uid://bdwiuojd4u5cn" path="res://scripts/settings.gd" id="1_5p8wc"]
+[ext_resource type="Theme" uid="uid://c33bn7on3i3f7" path="res://assets/theme.tres" id="1_r6d6q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r6d6q"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r6d6q")
+script = ExtResource("1_5p8wc")
+metadata/_edit_lock_ = true
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -352.0
+offset_right = 384.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/Video"]
+layout_mode = 2
+offset_left = 127.0
+offset_top = 36.0
+offset_right = 641.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 200
+columns = 2
+
+[node name="Vsync" type="Label" parent="TabContainer/Video/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Turn on V-sync"
+
+[node name="Vsync_button" type="CheckButton" parent="TabContainer/Video/GridContainer2"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Fps" type="Label" parent="TabContainer/Video/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Show Fps"
+
+[node name="Fps_button" type="CheckButton" parent="TabContainer/Video/GridContainer2"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Fps2" type="Label" parent="TabContainer/Video/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Show Fps Extended"
+
+[node name="Fps_button2" type="CheckButton" parent="TabContainer/Video/GridContainer2"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Input" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Input"]
+layout_mode = 2
+offset_left = 107.0
+offset_top = 36.0
+offset_right = 662.0
+offset_bottom = 612.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 200
+columns = 2
+
+[node name="Label_up" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Move Up"
+
+[node name="Button_up" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_down" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Move Down"
+
+[node name="Button_down" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_left" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Move Left"
+
+[node name="Button_left" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_right" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Move Right"
+
+[node name="Button_right" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_reload" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Reload"
+
+[node name="Button_reload" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_key1" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Switch to Rifle"
+
+[node name="Button_key1" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_key2" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Switch to Pistol"
+
+[node name="Button_key2" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_attack" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Shoot"
+
+[node name="Button_attack" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_interact" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Interact"
+
+[node name="Button_interact" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_grenade" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Throw Flashbang"
+
+[node name="Button_grenade" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_quicknode" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Quick Node"
+
+[node name="Button_quicknode" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Label_flashlight" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+text = "Flashlight"
+
+[node name="Button_flashlight" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+text = "KEY"
+
+[node name="Reset_To_Default" type="Button" parent="TabContainer/Input"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -56.0
+offset_right = 80.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "Reset to Default"
+
+[node name="Delete Key" type="Label" parent="TabContainer/Input"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 613.0
+offset_right = 176.0
+offset_bottom = 636.0
+text = "DEL to Delete Key"
+label_settings = SubResource("LabelSettings_r6d6q")
+
+[node name="Assign Key" type="Label" parent="TabContainer/Input"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 636.0
+offset_right = 176.0
+offset_bottom = 659.0
+text = "CLICK to Assign Key"
+label_settings = SubResource("LabelSettings_r6d6q")
+
+[node name="Back" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 0
+offset_left = 272.0
+offset_top = -352.0
+offset_right = 384.0
+offset_bottom = -318.0
+focus_mode = 0
+text = "Back"
+
+[connection signal="pressed" from="TabContainer/Video/GridContainer2/Vsync_button" to="." method="_on_vsync_button_pressed"]
+[connection signal="pressed" from="TabContainer/Video/GridContainer2/Fps_button" to="." method="_on_fps_button_pressed"]
+[connection signal="pressed" from="TabContainer/Video/GridContainer2/Fps_button2" to="." method="_on_fps_button_2_pressed"]
+[connection signal="pressed" from="TabContainer/Input/Reset_To_Default" to="." method="_on_reset_to_default_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

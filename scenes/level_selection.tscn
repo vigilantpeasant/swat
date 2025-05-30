@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4lauy3uvtp18"]
+
+[ext_resource type="Theme" uid="uid://c33bn7on3i3f7" path="res://assets/theme.tres" id="1_u1g2d"]
+[ext_resource type="Script" uid="uid://lghvd0h20cpw" path="res://scripts/level_selection.gd" id="2_gswpo"]
+
+[node name="Level Selection" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u1g2d")
+script = ExtResource("2_gswpo")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -256.0
+offset_right = 192.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Maps" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Maps"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 36.0
+offset_right = -32.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map_Test1" type="Button" parent="TabContainer/Maps/VBoxContainer"]
+layout_mode = 2
+text = "Test1"
+
+[node name="Settings" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -202.0
+offset_right = 160.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Flashlight" type="Label" parent="TabContainer/Settings/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "No Flashlight"
+
+[node name="Flashlight_button" type="CheckButton" parent="TabContainer/Settings/GridContainer2"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+offset_left = 80.0
+offset_top = -256.0
+offset_right = 192.0
+offset_bottom = -222.0
+focus_mode = 0
+text = "Back"
+
+[connection signal="pressed" from="TabContainer/Maps/VBoxContainer/Map_Test1" to="." method="_on_map_test_1_pressed"]
+[connection signal="pressed" from="TabContainer/Settings/GridContainer2/Flashlight_button" to="." method="_on_flashlight_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

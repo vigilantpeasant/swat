@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4xehi8oa148v"]
+
+[ext_resource type="Script" uid="uid://igxeaecjag8m" path="res://scripts/handcuff.gd" id="1_fdwbs"]
+
+[node name="Handcuff" type="Node2D"]
+script = ExtResource("1_fdwbs")

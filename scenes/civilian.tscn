@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu84grxgwv4v6"]
+
+[ext_resource type="Script" uid="uid://yeuesujjo64f" path="res://scripts/civilian.gd" id="1_avpx6"]
+[ext_resource type="PackedScene" uid="uid://b4xehi8oa148v" path="res://scenes/handcuff.tscn" id="2_jrwjn"]
+[ext_resource type="Texture2D" uid="uid://dlity8l86qxss" path="res://assets/civilian.png" id="2_pmt0b"]
+[ext_resource type="Texture2D" uid="uid://dbwlowifdra57" path="res://assets/civilian_handcuffed.png" id="3_notyc"]
+[ext_resource type="Texture2D" uid="uid://dm2i3aquud0xi" path="res://assets/civilian_dead.png" id="4_6ds25"]
+[ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="5_pmt0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iqb5"]
+size = Vector2(11.4286, 22.8572)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrwjn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pmt0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_notyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6ds25")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5iqb5"]
+cull_mode = 2
+polygon = PackedVector2Array(-10.7143, -5, 0, -5, 0, 5, -10.7143, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_notyc"]
+radius = 100.0
+
+[node name="Civilian" type="CharacterBody2D" groups=["Civilian"]]
+scale = Vector2(1.4, 1.4)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_avpx6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.40598e-07, 0)
+shape = SubResource("RectangleShape2D_5iqb5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jrwjn")
+autoplay = "default"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(5.71429, 3.55271e-15)
+occluder = SubResource("OccluderPolygon2D_5iqb5")
+
+[node name="Handcuff" parent="." instance=ExtResource("2_jrwjn")]
+
+[node name="Breakable" parent="." instance=ExtResource("5_pmt0b")]
+type = "Human"
+health = 15
+color = Color(0.632225, 1.9493e-06, 3.36915e-07, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_notyc")
+debug_color = Color(0.891907, 0.311351, 0.232045, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

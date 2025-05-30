@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7174f7g3k7hu"]
+
+[ext_resource type="Texture2D" uid="uid://cou626y8tci7f" path="res://assets/swat_pistol.png" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dhcor60wyj4b1" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://b08ghtri77ly2" path="res://assets/swat_rifle.png" id="2_qhqgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qhqgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_g2els")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(22.1429, 20)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qhqgy"]
+cull_mode = 2
+polygon = PackedVector2Array(-10.7143, -5, 0, -5, 0, 5, -10.7143, 5)
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dqkch"]
+gradient = SubResource("Gradient_qhqgy")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qlg0r"]
+gradient = SubResource("Gradient_dqkch")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
+scale = Vector2(1.4, 1.4)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_qhqgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqkch")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.07143, -4.25747e-07)
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(14.2857, 0.714286)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.6, 1.6)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+occluder = SubResource("OccluderPolygon2D_qhqgy")
+occluder_light_mask = 4
+
+[node name="Flashlight" type="PointLight2D" parent="."]
+color = Color(1, 0.810125, 0.587963, 1)
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter_smooth = 1.0
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_dqkch")
+offset = Vector2(120, 0)
+texture_scale = 2.8
+
+[node name="Self Light" type="PointLight2D" parent="."]
+visible = false
+color = Color(1, 0.9047, 0.795497, 1)
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_qlg0r")
+texture_scale = 2.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 70)
+collision_mask = 12

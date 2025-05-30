@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://310u63k8p3ok"]
+
+[ext_resource type="Material" uid="uid://c8ail6le7yj48" path="res://assets/blood_particle.tres" id="1_2jgbo"]
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 32
+lifetime = 7.5
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("1_2jgbo")

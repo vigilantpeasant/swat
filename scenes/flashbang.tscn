@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu0crbtcsldar"]
+
+[ext_resource type="Script" uid="uid://lidiak7mr8uy" path="res://scripts/flashbang.gd" id="1_gsm82"]
+[ext_resource type="Texture2D" uid="uid://cuyd6dpcc1wlw" path="res://assets/flashbang.png" id="1_rkmxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsm82"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkmxn"]
+radius = 162.444
+
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gsm82"]
+gradient = SubResource("Gradient_dqkch")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Flashbang" type="RigidBody2D"]
+top_level = true
+script = ExtResource("1_gsm82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gsm82")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rkmxn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rkmxn")
+debug_color = Color(0.928434, 0.267414, 0, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+scale = Vector2(3, 2.829)
+energy = 1.2
+blend_mode = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_gsm82")
