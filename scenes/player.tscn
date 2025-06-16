@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7174f7g3k7hu"]
+[gd_scene load_steps=16 format=3 uid="uid://b7174f7g3k7hu"]
 
-[ext_resource type="Texture2D" uid="uid://cou626y8tci7f" path="res://assets/swat_pistol.png" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://ig37ugnxyqs4" path="res://assets/swat_pistol.png" id="1_g2els"]
 [ext_resource type="Script" uid="uid://dhcor60wyj4b1" path="res://scripts/player.gd" id="1_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://b08ghtri77ly2" path="res://assets/swat_rifle.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bcs3k8guo284y" path="res://assets/swat_rifle.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bqm31ewx4kcvv" path="res://assets/swat_dead.png" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cs6468as77063" path="res://assets/swat_submachine.png" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://cfcb43mk0cw0j" path="res://scripts/camera_2d.gd" id="6_fjrip"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
 animations = [{
@@ -12,9 +16,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("1_g2els")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tuyoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qlg0r")
 }],
 "loop": false,
-"name": &"idle",
+"name": &"default",
 "speed": 0.0
 }]
 
@@ -49,17 +59,19 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 124.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-z_index = 1
+z_index = 2
 scale = Vector2(1.4, 1.4)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"idle"
-autoplay = "idle"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -69,19 +81,26 @@ shape = SubResource("RectangleShape2D_qlg0r")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(14.2857, 0.714286)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.6, 1.6)
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow_node")]
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+script = ExtResource("6_fjrip")
+follow_node = NodePath("..")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(0, 5.96046e-08)
 occluder = SubResource("OccluderPolygon2D_qhqgy")
 occluder_light_mask = 4
 
+[node name="Breakable" parent="." instance=ExtResource("4_dqkch")]
+type = "Player"
+health = 100
+color = Color(0.631373, 0, 0, 1)
+
 [node name="Flashlight" type="PointLight2D" parent="."]
-color = Color(1, 0.810125, 0.587963, 1)
+color = Color(1, 0.905882, 0.796078, 1)
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
@@ -89,7 +108,7 @@ shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_dqkch")
 offset = Vector2(120, 0)
-texture_scale = 2.8
+texture_scale = 2.5
 
 [node name="Self Light" type="PointLight2D" parent="."]
 visible = false
@@ -103,5 +122,19 @@ texture_scale = 2.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = -1.5708
-target_position = Vector2(0, 70)
-collision_mask = 12
+target_position = Vector2(0, 80)
+collision_mask = 29
+
+[node name="Flashbang Cast" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 40)
+collision_mask = 13
+
+[node name="Command Zone" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Command Zone"]
+shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(0.886449, 0.288692, 0.422175, 0.42)

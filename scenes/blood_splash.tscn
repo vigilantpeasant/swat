@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d05swdxkh0quj"]
+[gd_scene load_steps=3 format=3 uid="uid://d05swdxkh0quj"]
 
 [ext_resource type="Material" uid="uid://dt7lj2yofhfcu" path="res://assets/blood_splash.tres" id="1_qwesb"]
+[ext_resource type="Script" uid="uid://dmvrfwp1453ti" path="res://scripts/particle.gd" id="2_wsa2r"]
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
 emitting = false
@@ -9,3 +10,4 @@ lifetime = 7.5
 one_shot = true
 explosiveness = 1.0
 process_material = ExtResource("1_qwesb")
+script = ExtResource("2_wsa2r")

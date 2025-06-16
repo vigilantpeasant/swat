@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn3n82vfw5fyn"]
+
+[ext_resource type="Script" uid="uid://2djpdm3fvv8o" path="res://scripts/spawner.gd" id="1_2vbf6"]
+[ext_resource type="Texture2D" uid="uid://fk8kx8uujh7a" path="res://assets/warning.png" id="2_ik2nu"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_2vbf6")
+
+[node name="Placeholder" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ik2nu")

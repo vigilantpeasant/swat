@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://d06y7gqqjmm1c"]
+[gd_scene load_steps=9 format=3 uid="uid://d06y7gqqjmm1c"]
 
 [ext_resource type="Theme" uid="uid://c33bn7on3i3f7" path="res://assets/theme.tres" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://dnv74fildpexg" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bu13jfxu34tm7" path="res://assets/grass.png" id="3_8ln24"]
 [ext_resource type="PackedScene" uid="uid://pmni8bpevc3b" path="res://scenes/settings.tscn" id="3_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://b4lauy3uvtp18" path="res://scenes/level_selection.tscn" id="4_wu84c"]
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ln24"]
+gradient = SubResource("Gradient_qhqgy")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ln24"]
+font_size = 36
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -20,19 +35,58 @@ theme = ExtResource("1_ekxnf")
 script = ExtResource("1_l6cm7")
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(616, 360)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_8ln24")
+region_enabled = true
+region_rect = Rect2(0, 0, 32768, 32768)
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.133196, 0.133196, 0.133196, 1)
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(680, 360)
+blend_mode = 2
+shadow_filter_smooth = 1.0
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_8ln24")
+texture_scale = 3.0
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(112, 376)
+blend_mode = 2
+shadow_filter_smooth = 1.0
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_8ln24")
+texture_scale = 3.0
+metadata/_edit_lock_ = true
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -80.0
-offset_right = 112.0
-offset_bottom = 80.0
+anchors_preset = -1
+anchor_top = -0.067
+anchor_right = 0.182
+anchor_bottom = 1.067
+offset_top = 0.240002
+offset_right = -0.224014
+offset_bottom = -0.240051
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Game Name" type="Label" parent="Panel"]
+layout_mode = 2
+offset_top = 224.0
+offset_right = 223.0
+offset_bottom = 266.0
+text = "SWAT"
+label_settings = SubResource("LabelSettings_8ln24")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -46,21 +100,26 @@ alignment = 1
 [node name="Play" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Play"
 
 [node name="Settings" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Settings"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Exit"
 
 [node name="Settings" parent="." instance=ExtResource("3_bqqt6")]
 visible = false
 layout_mode = 1
+offset_left = 128.0
+offset_right = 128.0
 
 [node name="Level Selection" parent="." instance=ExtResource("4_wu84c")]
 visible = false

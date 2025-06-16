@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://h72hjwb0f7k0"]
+
+[ext_resource type="Script" uid="uid://cswey4p5y1eby" path="res://scripts/evidence.gd" id="1_6gikp"]
+[ext_resource type="Texture2D" uid="uid://dr0idfyl2whg1" path="res://assets/m4a1_sprite.png" id="1_wqesn"]
+[ext_resource type="Texture2D" uid="uid://b70y217allgxo" path="res://assets/ump_sprite.png" id="3_ajk3l"]
+[ext_resource type="Texture2D" uid="uid://4oknugbp68m0" path="res://assets/pistol_sprite.png" id="4_3eyhi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6gikp"]
+bounce = 0.1
+absorbent = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3eyhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wqesn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ajk3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3eyhi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wqesn"]
+radius = 17.0
+
+[node name="Evidence" type="RigidBody2D"]
+top_level = true
+collision_layer = 16
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_6gikp")
+gravity_scale = 0.0
+linear_damp = 50.0
+angular_damp = 50.0
+script = ExtResource("1_6gikp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(3, 3, 3, 1)
+z_index = 1
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3eyhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wqesn")

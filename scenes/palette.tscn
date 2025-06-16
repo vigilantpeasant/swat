@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciokvyx35wklh"]
+
+[ext_resource type="Texture2D" uid="uid://67h317d06sru" path="res://assets/palette.png" id="1_tqmyq"]
+[ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="2_5sx2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6chve"]
+size = Vector2(30, 38)
+
+[node name="Palette" type="StaticBody2D"]
+z_index = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_tqmyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_6chve")
+
+[node name="Breakable" parent="." instance=ExtResource("2_5sx2p")]
+type = "Wood"
+health = 4
+color = Color(0.309804, 0.152941, 0.0823529, 1)

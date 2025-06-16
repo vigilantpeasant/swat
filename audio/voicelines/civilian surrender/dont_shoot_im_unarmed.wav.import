@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2ayd51r0yh0v"
+path="res://.godot/imported/dont_shoot_im_unarmed.wav-063da05b0caa4a9bf3b6ee5e6e2fbad2.sample"
+
+[deps]
+
+source_file="res://audio/voicelines/civilian surrender/dont_shoot_im_unarmed.wav"
+dest_files=["res://.godot/imported/dont_shoot_im_unarmed.wav-063da05b0caa4a9bf3b6ee5e6e2fbad2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

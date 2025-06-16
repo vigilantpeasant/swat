@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu0crbtcsldar"]
+[gd_scene load_steps=8 format=3 uid="uid://bu0crbtcsldar"]
 
 [ext_resource type="Script" uid="uid://lidiak7mr8uy" path="res://scripts/flashbang.gd" id="1_gsm82"]
-[ext_resource type="Texture2D" uid="uid://cuyd6dpcc1wlw" path="res://assets/flashbang.png" id="1_rkmxn"]
+[ext_resource type="Texture2D" uid="uid://bjqnyhatw06u2" path="res://assets/flashbang.png" id="1_rkmxn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gsm82"]
+bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gsm82"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkmxn"]
-radius = 162.444
+radius = 100.0
 
 [sub_resource type="Gradient" id="Gradient_dqkch"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -21,6 +24,8 @@ fill_to = Vector2(1, 0.5)
 
 [node name="Flashbang" type="RigidBody2D"]
 top_level = true
+physics_material_override = SubResource("PhysicsMaterial_gsm82")
+gravity_scale = 0.01
 script = ExtResource("1_gsm82")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,7 +43,7 @@ debug_color = Color(0.928434, 0.267414, 0, 0.42)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 scale = Vector2(3, 2.829)
-energy = 1.2
+energy = 1.1
 blend_mode = 2
 shadow_enabled = true
 shadow_item_cull_mask = 3

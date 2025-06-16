@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://e624hvvmjfdc"]
+
+[ext_resource type="Texture2D" uid="uid://ceii8xt2sm3oy" path="res://assets/swat_truck.png" id="1_mmg2v"]
+[ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="2_vhvc7"]
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vhvc7"]
+gradient = SubResource("Gradient_qhqgy")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmg2v"]
+gradient = SubResource("Gradient_dqkch")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Swat Truck" type="StaticBody2D"]
+z_index = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-120, -40, -96, -48, -32, -48, -24, -56, 120, -56, 128, -40, 128, 40, 112, 56, -24, 56, -32, 48, -104, 48, -120, 40)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_mmg2v")
+
+[node name="Breakable" parent="." instance=ExtResource("2_vhvc7")]
+type = "Metal"
+health = 50
+color = Color(1, 1, 1, 1)
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Lights"]
+position = Vector2(4, -1.90735e-06)
+scale = Vector2(11.6, 4.8)
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+position = Vector2(-114, -32)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_vhvc7")
+offset = Vector2(-24, 0)
+texture_scale = 1.4
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
+position = Vector2(-116, 32)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_vhvc7")
+offset = Vector2(-24, 0)
+texture_scale = 1.4
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+position = Vector2(122, -21)
+color = Color(1, 0, 0, 1)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_mmg2v")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights"]
+position = Vector2(122, 20)
+color = Color(1, 0, 0, 1)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_mmg2v")

@@ -1,11 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfcourr7a7hr4"]
+[gd_scene load_steps=15 format=3 uid="uid://bfcourr7a7hr4"]
 
 [ext_resource type="Theme" uid="uid://c33bn7on3i3f7" path="res://assets/theme.tres" id="1_syvep"]
 [ext_resource type="Script" uid="uid://bfm134htiqls" path="res://scripts/user_interface.gd" id="2_l2bgj"]
+[ext_resource type="Texture2D" uid="uid://b6rcnjcftvyy8" path="res://assets/health.png" id="3_xsrv6"]
 [ext_resource type="PackedScene" uid="uid://pmni8bpevc3b" path="res://scenes/settings.tscn" id="3_y1h3b"]
+[ext_resource type="Texture2D" uid="uid://dr0idfyl2whg1" path="res://assets/m4a1_sprite.png" id="4_cufge"]
+[ext_resource type="Texture2D" uid="uid://csbsekjk62ajj" path="res://assets/silenced_pistol_sprite.png" id="5_lmgon"]
+[ext_resource type="Texture2D" uid="uid://fgo3rj7rg3wd" path="res://assets/flashbang_sprite.png" id="5_sdud1"]
+[ext_resource type="PackedScene" uid="uid://qp3bo481dj33" path="res://scenes/end_level.tscn" id="6_lmgon"]
+[ext_resource type="Texture2D" uid="uid://b70y217allgxo" path="res://assets/ump_sprite.png" id="9_aisij"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lmgon"]
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_syvep"]
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsrv6"]
+font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cufge"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.882353)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_cufge"]
+font_size = 18
 
 [node name="User Interface" type="Control"]
 layout_mode = 3
@@ -24,6 +46,19 @@ metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="FPS" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.031
+anchor_right = 0.194
+anchor_bottom = 0.073
+offset_left = -0.320002
+offset_top = 0.191999
+offset_right = -0.320007
+offset_bottom = -0.064003
+bbcode_enabled = true
+text = "Fps: 1440 / 1440 / 1440"
+
 [node name="Tooltip" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.456
@@ -40,16 +75,32 @@ text = "TOOLTIP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Objectives" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.839
+anchor_top = 0.031
+anchor_right = 0.981
+anchor_bottom = 0.117
+offset_left = 0.0799561
+offset_top = 0.191999
+offset_right = 0.319946
+offset_bottom = 0.143997
+grow_horizontal = 0
+text = "Handcuff Civilians (XX Left)
+Arrest Suspects (XX Left)"
+label_settings = SubResource("LabelSettings_lmgon")
+vertical_alignment = 1
+
 [node name="Flashlight_label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.456
-anchor_top = 0.937
-anchor_right = 0.541
-anchor_bottom = 0.969
-offset_left = 568.32
-offset_top = -47.616
-offset_right = 563.52
-offset_bottom = -48.192
+anchor_left = 0.875
+anchor_top = 0.875
+anchor_right = 0.962
+anchor_bottom = 0.906
+offset_left = -0.00012207
+offset_top = -6.10352e-05
+offset_right = 0.639893
+offset_bottom = 0.192017
 grow_horizontal = 2
 grow_vertical = 0
 text = "Flashlight On"
@@ -57,61 +108,124 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -80.0
-offset_right = 56.0
-offset_bottom = -53.0
+anchors_preset = -1
+anchor_left = 0.456
+anchor_top = 0.896
+anchor_right = 0.544
+anchor_bottom = 0.931
+offset_left = 0.319946
+offset_top = -0.128052
+offset_right = -0.320068
+offset_bottom = -0.00805664
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_syvep")
 theme_override_font_sizes/font_size = 18
 
+[node name="End Level" parent="CanvasLayer" instance=ExtResource("6_lmgon")]
+visible = false
+
 [node name="Information" type="Panel" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -64.0
-offset_right = -24.0
-offset_bottom = -24.0
+anchors_preset = -1
+anchor_left = 0.919
+anchor_top = 0.917
+anchor_right = 0.981
+anchor_bottom = 0.969
+offset_left = -0.320068
+offset_top = -0.256042
+offset_right = 0.319946
+offset_bottom = -0.192017
 grow_horizontal = 0
 grow_vertical = 0
+theme = ExtResource("1_syvep")
 
 [node name="Ammo" type="Label" parent="CanvasLayer/Information"]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.975
+offset_bottom = 1.0
 text = "32 / 32"
 label_settings = SubResource("LabelSettings_syvep")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FPS" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 292.0
-offset_bottom = 47.0
-bbcode_enabled = true
-text = "Fps: 1440 / 1440 / 1440"
+[node name="Health" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.911
+anchor_right = 0.13
+anchor_bottom = 0.969
+offset_left = -0.31988
+offset_top = 0.351929
+offset_right = 9.60013
+offset_bottom = -0.192078
+grow_vertical = 0
+theme = ExtResource("1_syvep")
+
+[node name="Health" type="Label" parent="CanvasLayer/Health"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.931
+anchor_right = 0.1
+anchor_bottom = 0.967
+offset_left = 33.112
+offset_top = -40.964
+offset_right = 136.8
+offset_bottom = -1.548
+grow_vertical = 0
+text = "Health: 100"
+label_settings = SubResource("LabelSettings_xsrv6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health_Sprite" type="Sprite2D" parent="CanvasLayer/Health"]
+position = Vector2(20, 20)
+scale = Vector2(1.16667, 1.16667)
+texture = ExtResource("3_xsrv6")
+
+[node name="Flashbang" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.856
+anchor_top = 0.917
+anchor_right = 0.917
+anchor_bottom = 0.969
+offset_left = 0.319946
+offset_top = -0.256042
+offset_right = 0.23999
+offset_bottom = -0.192017
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_syvep")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Flashbang"]
+position = Vector2(24, 20)
+scale = Vector2(1.33333, 1.33334)
+texture = ExtResource("5_sdud1")
+
+[node name="Flashbang" type="Label" parent="CanvasLayer/Flashbang"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.975
+offset_left = 40.0
+offset_bottom = 1.0
+text = "3"
+label_settings = SubResource("LabelSettings_syvep")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Pause Menu" type="Panel" parent="CanvasLayer"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -192.0
-offset_right = 104.0
-offset_bottom = 192.0
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.25
+anchor_right = 0.581
+anchor_bottom = 0.75
+offset_left = -1.60004
+offset_right = 0.319946
+offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_syvep")
@@ -129,7 +243,7 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.65098)
+color = Color(0, 0, 0, 0.666667)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause Menu"]
 layout_mode = 1
@@ -143,21 +257,31 @@ alignment = 1
 [node name="Resume" type="Button" parent="CanvasLayer/Pause Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Resume"
 
 [node name="Settings" type="Button" parent="CanvasLayer/Pause Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Settings"
+
+[node name="Restart" type="Button" parent="CanvasLayer/Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Restart"
 
 [node name="Exit_MainMenu" type="Button" parent="CanvasLayer/Pause Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Exit to Main Menu"
 
 [node name="Exit_Desktop" type="Button" parent="CanvasLayer/Pause Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Exit to Desktop"
 
 [node name="Settings Menu" type="Control" parent="CanvasLayer"]
@@ -191,7 +315,68 @@ offset_top = 340.0
 offset_right = 596.0
 offset_bottom = 340.0
 
+[node name="Weapon Selection" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.862
+anchor_top = 0.709
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 136.64
+offset_top = 183.488
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Weapon Selection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0
+anchor_top = -2.8
+anchor_right = 1.425
+anchor_bottom = -1.9
+theme_override_styles/panel = SubResource("StyleBoxFlat_cufge")
+metadata/_edit_lock_ = true
+
+[node name="Pistol" type="Sprite2D" parent="CanvasLayer/Weapon Selection"]
+position = Vector2(-24, -132)
+texture = ExtResource("5_lmgon")
+
+[node name="Pistol_Label" type="Label" parent="CanvasLayer/Weapon Selection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -3.6
+anchor_right = 0.4
+anchor_bottom = -3.0
+offset_bottom = -0.999992
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rifle" type="Sprite2D" parent="CanvasLayer/Weapon Selection"]
+position = Vector2(-40, -96)
+scale = Vector2(2, 2)
+texture = ExtResource("4_cufge")
+
+[node name="SMG" type="Sprite2D" parent="CanvasLayer/Weapon Selection"]
+visible = false
+position = Vector2(-40.5, -97.5)
+scale = Vector2(1.90625, 1.625)
+texture = ExtResource("9_aisij")
+
+[node name="Rifle_Label" type="Label" parent="CanvasLayer/Weapon Selection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -2.7
+anchor_right = 0.4
+anchor_bottom = -2.0
+text = "1"
+label_settings = SubResource("LabelSettings_cufge")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/Pause Menu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause Menu/VBoxContainer/Exit_MainMenu" to="." method="_on_exit_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause Menu/VBoxContainer/Exit_Desktop" to="." method="_on_exit_desktop_pressed"]

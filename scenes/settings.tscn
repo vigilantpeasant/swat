@@ -31,52 +31,118 @@ offset_right = 384.0
 offset_bottom = 352.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
-[node name="Video" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="Display & Sound" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="GridContainer2" type="GridContainer" parent="TabContainer/Video"]
+[node name="Video" type="Label" parent="TabContainer/Display & Sound"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.042
+anchor_right = 0.536
+anchor_bottom = 0.084
+offset_left = 0.14798
+offset_top = -0.0560017
+offset_right = -0.14801
+offset_bottom = -0.112003
+grow_horizontal = 2
+text = "Video"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Display & Sound"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 56.0
+offset_right = 643.0
+offset_bottom = 60.0
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Display & Sound"]
 layout_mode = 2
 offset_left = 127.0
-offset_top = 36.0
+offset_top = 64.0
 offset_right = 641.0
-offset_bottom = 644.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 200
+theme_override_constants/h_separation = 175
 columns = 2
 
-[node name="Vsync" type="Label" parent="TabContainer/Video/GridContainer2"]
+[node name="Vsync" type="Label" parent="TabContainer/Display & Sound/GridContainer"]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "Turn on V-sync"
 
-[node name="Vsync_button" type="CheckButton" parent="TabContainer/Video/GridContainer2"]
+[node name="Vsync_button" type="CheckButton" parent="TabContainer/Display & Sound/GridContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 
-[node name="Fps" type="Label" parent="TabContainer/Video/GridContainer2"]
+[node name="Fps" type="Label" parent="TabContainer/Display & Sound/GridContainer"]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "Show Fps"
 
-[node name="Fps_button" type="CheckButton" parent="TabContainer/Video/GridContainer2"]
+[node name="Fps_button" type="CheckButton" parent="TabContainer/Display & Sound/GridContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 
-[node name="Fps2" type="Label" parent="TabContainer/Video/GridContainer2"]
+[node name="Fps2" type="Label" parent="TabContainer/Display & Sound/GridContainer"]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "Show Fps Extended"
 
-[node name="Fps_button2" type="CheckButton" parent="TabContainer/Video/GridContainer2"]
+[node name="Fps_button2" type="CheckButton" parent="TabContainer/Display & Sound/GridContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+
+[node name="Audio" type="Label" parent="TabContainer/Display & Sound"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.416
+anchor_right = 0.536
+anchor_bottom = 0.458
+offset_left = -0.35202
+offset_top = 0.112
+offset_right = 1.35199
+offset_bottom = 0.0559692
+grow_horizontal = 2
+text = "Audio"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Display & Sound"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 306.0
+offset_right = 643.0
+offset_bottom = 310.0
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/Display & Sound"]
+layout_mode = 2
+offset_left = 127.0
+offset_top = 316.0
+offset_right = 641.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 175
+columns = 2
+
+[node name="Sound Effects" type="Label" parent="TabContainer/Display & Sound/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="Sound Effects_button" type="CheckButton" parent="TabContainer/Display & Sound/GridContainer2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 
 [node name="Input" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -88,7 +154,7 @@ offset_right = 662.0
 offset_bottom = 612.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 200
+theme_override_constants/h_separation = 175
 columns = 2
 
 [node name="Label_up" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -99,6 +165,7 @@ text = "Move Up"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_down" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -109,6 +176,7 @@ text = "Move Down"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_left" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -119,6 +187,7 @@ text = "Move Left"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_right" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -129,6 +198,7 @@ text = "Move Right"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_reload" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -139,6 +209,7 @@ text = "Reload"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_key1" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -149,6 +220,7 @@ text = "Switch to Rifle"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_key2" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -159,6 +231,7 @@ text = "Switch to Pistol"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_attack" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -169,6 +242,7 @@ text = "Shoot"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_interact" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -179,6 +253,20 @@ text = "Interact"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "KEY"
+
+[node name="Label_command" type="Label" parent="TabContainer/Input/GridContainer"]
+layout_mode = 2
+tooltip_text = "To Calm Down People"
+mouse_filter = 0
+text = "Command Suspect"
+
+[node name="Button_command" type="Button" parent="TabContainer/Input/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_grenade" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -189,16 +277,7 @@ text = "Throw Flashbang"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
-text = "KEY"
-
-[node name="Label_quicknode" type="Label" parent="TabContainer/Input/GridContainer"]
-layout_mode = 2
-text = "Quick Node"
-
-[node name="Button_quicknode" type="Button" parent="TabContainer/Input/GridContainer"]
-custom_minimum_size = Vector2(175, 0)
-layout_mode = 2
-focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Label_flashlight" type="Label" parent="TabContainer/Input/GridContainer"]
@@ -209,6 +288,7 @@ text = "Flashlight"
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "KEY"
 
 [node name="Reset_To_Default" type="Button" parent="TabContainer/Input"]
@@ -226,6 +306,7 @@ offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Reset to Default"
 
 [node name="Delete Key" type="Label" parent="TabContainer/Input"]
@@ -254,10 +335,12 @@ offset_top = -352.0
 offset_right = 384.0
 offset_bottom = -318.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Back"
 
-[connection signal="pressed" from="TabContainer/Video/GridContainer2/Vsync_button" to="." method="_on_vsync_button_pressed"]
-[connection signal="pressed" from="TabContainer/Video/GridContainer2/Fps_button" to="." method="_on_fps_button_pressed"]
-[connection signal="pressed" from="TabContainer/Video/GridContainer2/Fps_button2" to="." method="_on_fps_button_2_pressed"]
+[connection signal="pressed" from="TabContainer/Display & Sound/GridContainer/Vsync_button" to="." method="_on_vsync_button_pressed"]
+[connection signal="pressed" from="TabContainer/Display & Sound/GridContainer/Fps_button" to="." method="_on_fps_button_pressed"]
+[connection signal="pressed" from="TabContainer/Display & Sound/GridContainer/Fps_button2" to="." method="_on_fps_button_2_pressed"]
+[connection signal="pressed" from="TabContainer/Display & Sound/GridContainer2/Sound Effects_button" to="." method="_on_sound_effects_button_pressed"]
 [connection signal="pressed" from="TabContainer/Input/Reset_To_Default" to="." method="_on_reset_to_default_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

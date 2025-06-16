@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c3w2secq4kfrp"
+path="res://.godot/imported/show_me_your_hands.wav-c1028cba14cd415f383b73cd64493c7f.sample"
+
+[deps]
+
+source_file="res://audio/voicelines/swat command/show_me_your_hands.wav"
+dest_files=["res://.godot/imported/show_me_your_hands.wav-c1028cba14cd415f383b73cd64493c7f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

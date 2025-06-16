@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfmfh1mq4gf4w"
+path="res://.godot/imported/okay_im_dropping_theweapon.wav-23e7b2bfe56a3267c8c6b456c6bd44c9.sample"
+
+[deps]
+
+source_file="res://audio/voicelines/suspect surrender/okay_im_dropping_theweapon.wav"
+dest_files=["res://.godot/imported/okay_im_dropping_theweapon.wav-23e7b2bfe56a3267c8c6b456c6bd44c9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

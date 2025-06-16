@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg8tvi8qmnvsw"]
+
+[ext_resource type="Texture2D" uid="uid://dwun55cgp58g" path="res://assets/forklift.png" id="1_waasx"]
+[ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="2_u4wsy"]
+
+[node name="Forklift" type="StaticBody2D"]
+z_index = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-120, -40, -96, -48, -32, -48, -24, -56, 120, -56, 128, -40, 128, 40, 112, 56, -24, 56, -32, 48, -104, 48, -120, 40)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_waasx")
+
+[node name="Breakable" parent="." instance=ExtResource("2_u4wsy")]
+type = "Metal"
+health = 40
+color = Color(1, 1, 1, 1)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(21, 0.5)
+scale = Vector2(4.1, 2.35)

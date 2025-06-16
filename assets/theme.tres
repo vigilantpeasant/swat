@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=32 format=4 uid="uid://c33bn7on3i3f7"]
+[gd_resource type="Theme" load_steps=33 format=4 uid="uid://c33bn7on3i3f7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8htd"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.784314)
@@ -1355,6 +1355,13 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcf2e"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.882353)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wms38"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.882353)
 corner_radius_top_left = 4
@@ -1406,6 +1413,7 @@ CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_hkoqn")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_hkoqn")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_hkoqn")
 Panel/styles/panel = SubResource("StyleBoxFlat_wycmq")
+PopupPanel/styles/panel = SubResource("StyleBoxFlat_bcf2e")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_wms38")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_x2pqw")
 TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_5x3i2")

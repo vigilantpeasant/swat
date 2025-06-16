@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4lauy3uvtp18"]
+[gd_scene load_steps=4 format=3 uid="uid://b4lauy3uvtp18"]
 
 [ext_resource type="Theme" uid="uid://c33bn7on3i3f7" path="res://assets/theme.tres" id="1_u1g2d"]
 [ext_resource type="Script" uid="uid://lghvd0h20cpw" path="res://scripts/level_selection.gd" id="2_gswpo"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_gswpo"]
 
 [node name="Level Selection" type="Control"]
 layout_mode = 3
@@ -22,9 +24,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
+offset_left = -280.0
 offset_top = -256.0
-offset_right = 192.0
+offset_right = 136.0
 offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -46,16 +48,53 @@ offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Map_Test1" type="Button" parent="TabContainer/Maps/VBoxContainer"]
+[node name="Map_Warehouse" type="Button" parent="TabContainer/Maps/VBoxContainer"]
 layout_mode = 2
-text = "Test1"
+mouse_default_cursor_shape = 2
+text = "Warehouse"
 
-[node name="Settings" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="TabContainer2" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 144.0
+offset_top = -256.0
+offset_right = 560.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 2
+current_tab = 0
+
+[node name="Settings" type="TabBar" parent="TabContainer2"]
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 0
 
-[node name="GridContainer2" type="GridContainer" parent="TabContainer/Settings"]
+[node name="Challenges" type="Label" parent="TabContainer2/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.042
+anchor_right = 0.536
+anchor_bottom = 0.084
+offset_left = -12.524
+offset_top = -0.0559959
+offset_right = 12.524
+offset_bottom = 7.952
+grow_horizontal = 2
+text = "Challenges"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer2/Settings"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 56.0
+offset_right = 409.0
+offset_bottom = 60.0
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer2/Settings"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,31 +102,120 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -160.0
-offset_top = -202.0
+offset_top = -170.0
+offset_right = 160.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Flashlight" type="Label" parent="TabContainer2/Settings/GridContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "No Flashlight"
+
+[node name="Flashlight_button" type="CheckButton" parent="TabContainer2/Settings/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="No Casualties" type="Label" parent="TabContainer2/Settings/GridContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "No Casualties"
+
+[node name="NoCasualities_button" type="CheckButton" parent="TabContainer2/Settings/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Loadout" type="Label" parent="TabContainer2/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.042
+anchor_right = 0.536
+anchor_bottom = 0.084
+offset_left = -34.024
+offset_top = 105.008
+offset_right = 16.024
+offset_bottom = 113.016
+grow_horizontal = 2
+text = "Loadout"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer2/Settings"]
+layout_mode = 0
+offset_top = 161.064
+offset_right = 400.0
+offset_bottom = 165.064
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer2/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -66.0
 offset_right = 160.0
 offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="Flashlight" type="Label" parent="TabContainer/Settings/GridContainer2"]
+[node name="Rifle" type="Label" parent="TabContainer2/Settings/GridContainer2"]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
-text = "No Flashlight"
+text = "Rifle"
 
-[node name="Flashlight_button" type="CheckButton" parent="TabContainer/Settings/GridContainer2"]
+[node name="Rifle_button" type="CheckButton" parent="TabContainer2/Settings/GridContainer2"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_gswpo")
+
+[node name="Submachine" type="Label" parent="TabContainer2/Settings/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Submachine"
+
+[node name="Submachine_button" type="CheckButton" parent="TabContainer2/Settings/GridContainer2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_group = SubResource("ButtonGroup_gswpo")
+
+[node name="Flashbang" type="Label" parent="TabContainer2/Settings/GridContainer2"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "Flashbang Count"
+
+[node name="Flashbang_option" type="OptionButton" parent="TabContainer2/Settings/GridContainer2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "1"
+popup/item_0/id = 1
+popup/item_1/text = "3"
+popup/item_1/id = 3
+popup/item_2/text = "5"
+popup/item_2/id = 5
 
 [node name="Back" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 offset_left = 80.0
 offset_top = -256.0
-offset_right = 192.0
+offset_right = 200.0
 offset_bottom = -222.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Back"
 
-[connection signal="pressed" from="TabContainer/Maps/VBoxContainer/Map_Test1" to="." method="_on_map_test_1_pressed"]
-[connection signal="pressed" from="TabContainer/Settings/GridContainer2/Flashlight_button" to="." method="_on_flashlight_button_pressed"]
+[connection signal="pressed" from="TabContainer/Maps/VBoxContainer/Map_Warehouse" to="." method="_on_map_warehouse_pressed"]
+[connection signal="pressed" from="TabContainer2/Settings/GridContainer/Flashlight_button" to="." method="_on_flashlight_button_pressed"]
+[connection signal="pressed" from="TabContainer2/Settings/GridContainer/NoCasualities_button" to="." method="_on_no_casualities_button_pressed"]
+[connection signal="pressed" from="TabContainer2/Settings/GridContainer2/Rifle_button" to="." method="_on_rifle_button_pressed"]
+[connection signal="pressed" from="TabContainer2/Settings/GridContainer2/Submachine_button" to="." method="_on_submachine_button_pressed"]
+[connection signal="item_selected" from="TabContainer2/Settings/GridContainer2/Flashbang_option" to="." method="_on_flashbang_option_item_selected"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

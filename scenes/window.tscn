@@ -1,21 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://85s17413ueyc"]
+[gd_scene load_steps=5 format=3 uid="uid://85s17413ueyc"]
 
-[ext_resource type="Texture2D" uid="uid://bit0jr830vlm4" path="res://assets/window.png" id="1_oya5r"]
+[ext_resource type="Texture2D" uid="uid://bvgb8n33uuhsx" path="res://assets/window.png" id="1_oya5r"]
 [ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="2_to7fh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_to7fh"]
-size = Vector2(32, 32)
+size = Vector2(30, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvkcj"]
+size = Vector2(30, 4)
 
 [node name="Window" type="StaticBody2D"]
+collision_layer = 17
+collision_mask = 17
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_oya5r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_to7fh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_qvkcj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_to7fh")
 
 [node name="Breakable" parent="." instance=ExtResource("2_to7fh")]
-type = "Window"
+type = "Glass"
 health = 2
 color = Color(0.615686, 1, 1, 1)

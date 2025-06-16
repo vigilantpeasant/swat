@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqpgqtlbx74fp"
+path="res://.godot/imported/hands_in_the_air.wav-865d98d323773bb23825ca0322c1b84a.sample"
+
+[deps]
+
+source_file="res://audio/voicelines/swat command/hands_in_the_air.wav"
+dest_files=["res://.godot/imported/hands_in_the_air.wav-865d98d323773bb23825ca0322c1b84a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

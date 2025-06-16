@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgpew3nv7hcpu"
+path="res://.godot/imported/i_didnt_do_anything.wav-4cba56354f0be597dadc8bf4f3e0661c.sample"
+
+[deps]
+
+source_file="res://audio/voicelines/civilian surrender/i_didnt_do_anything.wav"
+dest_files=["res://.godot/imported/i_didnt_do_anything.wav-4cba56354f0be597dadc8bf4f3e0661c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

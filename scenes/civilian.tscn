@@ -1,14 +1,59 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu84grxgwv4v6"]
+[gd_scene load_steps=16 format=3 uid="uid://bu84grxgwv4v6"]
 
 [ext_resource type="Script" uid="uid://yeuesujjo64f" path="res://scripts/civilian.gd" id="1_avpx6"]
+[ext_resource type="Texture2D" uid="uid://fk8kx8uujh7a" path="res://assets/warning.png" id="2_6ds25"]
 [ext_resource type="PackedScene" uid="uid://b4xehi8oa148v" path="res://scenes/handcuff.tscn" id="2_jrwjn"]
-[ext_resource type="Texture2D" uid="uid://dlity8l86qxss" path="res://assets/civilian.png" id="2_pmt0b"]
-[ext_resource type="Texture2D" uid="uid://dbwlowifdra57" path="res://assets/civilian_handcuffed.png" id="3_notyc"]
-[ext_resource type="Texture2D" uid="uid://dm2i3aquud0xi" path="res://assets/civilian_dead.png" id="4_6ds25"]
+[ext_resource type="Shader" uid="uid://ckhw3ydqeg4s7" path="res://assets/suspect.gdshader" id="2_kbkab"]
+[ext_resource type="Texture2D" uid="uid://bvtqxsre6n3xu" path="res://assets/civilian.png" id="2_pmt0b"]
+[ext_resource type="Texture2D" uid="uid://dgvx7wirvs70i" path="res://assets/civilian_handcuffed.png" id="3_notyc"]
+[ext_resource type="Texture2D" uid="uid://wfld4xa2gvj" path="res://assets/civilian_dead.png" id="4_6ds25"]
 [ext_resource type="PackedScene" uid="uid://nylywe3xppti" path="res://scenes/breakable.tscn" id="5_pmt0b"]
+
+[sub_resource type="Animation" id="Animation_u15h6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ekdxm"]
+resource_name = "flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u15h6"]
+_data = {
+&"RESET": SubResource("Animation_u15h6"),
+&"flash": SubResource("Animation_ekdxm")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iqb5"]
 size = Vector2(11.4286, 22.8572)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5xed"]
+resource_local_to_scene = true
+shader = ExtResource("2_kbkab")
+shader_parameter/flash_color = Color(0.466667, 0, 0, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jrwjn"]
 animations = [{
@@ -27,12 +72,8 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5iqb5"]
-cull_mode = 2
-polygon = PackedVector2Array(-10.7143, -5, 0, -5, 0, 5, -10.7143, 5)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_notyc"]
-radius = 100.0
+radius = 164.0
 
 [node name="Civilian" type="CharacterBody2D" groups=["Civilian"]]
 scale = Vector2(1.4, 1.4)
@@ -40,26 +81,44 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_avpx6")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u15h6")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 4.0
+path_max_distance = 400.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.40598e-07, 0)
 shape = SubResource("RectangleShape2D_5iqb5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_w5xed")
 sprite_frames = SubResource("SpriteFrames_jrwjn")
 autoplay = "default"
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(5.71429, 3.55271e-15)
-occluder = SubResource("OccluderPolygon2D_5iqb5")
+[node name="Wall Detector" type="RayCast2D" parent="."]
+target_position = Vector2(164, 0)
+collision_mask = 27
 
 [node name="Handcuff" parent="." instance=ExtResource("2_jrwjn")]
 
 [node name="Breakable" parent="." instance=ExtResource("5_pmt0b")]
 type = "Human"
-health = 15
+health = 10
 color = Color(0.632225, 1.9493e-06, 3.36915e-07, 1)
 
+[node name="Warning" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(4, 4, 1, 1)
+z_index = 1
+position = Vector2(0.714286, -27.1429)
+texture = ExtResource("2_6ds25")
+
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
